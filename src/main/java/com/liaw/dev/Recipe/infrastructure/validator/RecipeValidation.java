@@ -1,5 +1,7 @@
 package com.liaw.dev.Recipe.infrastructure.validator;
 
+import com.liaw.dev.Recipe.core.enums.Category;
+import com.liaw.dev.Recipe.infrastructure.exceptions.CategoryNotFoundException;
 import com.liaw.dev.Recipe.infrastructure.exceptions.RecipeNotFoundException;
 import com.liaw.dev.Recipe.infrastructure.exceptions.RecipeTitleDescriptionEqualsException;
 import com.liaw.dev.Recipe.infrastructure.percistence.RecipeEntity;
@@ -7,6 +9,7 @@ import com.liaw.dev.Recipe.infrastructure.percistence.RecipeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -18,9 +21,25 @@ public class RecipeValidation {
     public boolean existRecipeId(Long id){
         Optional<RecipeEntity> recipe = repository.findById(id);
         if (recipe.isEmpty()){
-            throw new RecipeNotFoundException("Receita com id: "+id+" não encontrada");
+            throw new RecipeNotFoundException("Receita não encontrada");
         }
         return false;
+    }
+
+    public void validateSearchRecipe(String title, String description, String ingredient){
+        Optional<RecipeEntity> recipe = repository.findByTitleAndDescriptionAndIngredient(
+                title, description, ingredient);
+        if (recipe == null){
+            throw new RecipeNotFoundException("Receita não encontrada");
+        }
+
+    }
+
+    public void existCategory(Category category){
+        List<RecipeEntity> recipe = repository.findByCategory(category);
+        if (recipe == null){
+            throw new CategoryNotFoundException("Categoria: "+category+" não encontrada");
+        }
     }
 
     public void existRecipeTitle(String title, String description){
@@ -30,6 +49,7 @@ public class RecipeValidation {
                         "Receita com título: "+title+" e descrição: "+description+" já existe");
             }
         }
+
 }
 
 
