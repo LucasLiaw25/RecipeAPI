@@ -19,4 +19,12 @@ public class Handle {
     public ErrorMessage handleRecipeTitleDescriptionEqualsException(RecipeTitleDescriptionEqualsException e){
         return new ErrorMessage(HttpStatus.CONFLICT.value(), e.getMessage());
     }
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(CategoryNotFoundException.class)
+    public ErrorMessage handleCategoryNotFoundException(CategoryNotFoundException e){
+        return new ErrorMessage(
+                HttpStatus.NOT_FOUND.value(), e.getMessage()
+        );
+    }
 }
