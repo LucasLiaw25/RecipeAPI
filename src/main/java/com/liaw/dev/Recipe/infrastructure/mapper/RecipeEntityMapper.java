@@ -2,7 +2,9 @@ package com.liaw.dev.Recipe.infrastructure.mapper;
 
 import com.liaw.dev.Recipe.core.entities.Recipe;
 import com.liaw.dev.Recipe.infrastructure.percistence.RecipeEntity;
+import org.springframework.stereotype.Component;
 
+@Component
 public class RecipeEntityMapper {
 
     public RecipeEntity toEntity(Recipe recipe){

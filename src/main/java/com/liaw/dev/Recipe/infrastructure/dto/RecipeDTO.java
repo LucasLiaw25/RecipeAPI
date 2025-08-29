@@ -8,6 +8,6 @@ public record RecipeDTO(
         @NotBlank String title,
         @NotBlank String description,
         @NotBlank String ingredient,
-        @NotBlank Category category
+        Category category
 ) {
 }

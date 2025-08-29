@@ -2,7 +2,9 @@ package com.liaw.dev.Recipe.infrastructure.mapper;
 
 import com.liaw.dev.Recipe.core.entities.Recipe;
 import com.liaw.dev.Recipe.infrastructure.dto.RecipeDTO;
+import org.springframework.stereotype.Component;
 
+@Component
 public class RecipeMapper {
 
     public RecipeDTO toDto(Recipe recipe){

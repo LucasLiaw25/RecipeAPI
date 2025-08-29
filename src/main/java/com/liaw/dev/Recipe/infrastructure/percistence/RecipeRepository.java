@@ -1,5 +1,6 @@
-gpackage com.liaw.dev.Recipe.infrastructure.percistence;
+package com.liaw.dev.Recipe.infrastructure.percistence;
 
+import com.liaw.dev.Recipe.infrastructure.percistence.RecipeEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
