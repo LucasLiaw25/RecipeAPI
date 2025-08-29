@@ -1,11 +1,10 @@
-package com.liaw.dev.Recipe.core.usecase;
+package com.liaw.dev.Recipe.core.usecase.classes;
 
 import com.liaw.dev.Recipe.core.entities.Recipe;
 import com.liaw.dev.Recipe.core.gateway.RecipeGateway;
+import com.liaw.dev.Recipe.core.usecase.interfaces.UpdateRecipeUseCase;
 
-import java.util.Optional;
-
-public class UpdateRecipeUseCaseImpl implements UpdateRecipeUseCase{
+public class UpdateRecipeUseCaseImpl implements UpdateRecipeUseCase {
 
     private final RecipeGateway recipeGateway;
 
